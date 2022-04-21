@@ -1,5 +1,33 @@
 import unittest
 
+class StackError(Exception): pass
+class OutOfRangeError(StackError): pass
+
+class Stack:
+    def __init__(self):
+        self.__sList = []
+
+    def push(self, inElement):
+        self.__sList.append(inElement)
+    
+    def pop(self):
+        if len(self.__sList) <= 0:
+            raise OutOfRangeError("Cannot pop empty list")
+        else:
+            return self.__sList.pop()
+
+    def isEmpty(self):
+        return len(self.__sList) == 0
+    
+    def size(self):
+        return len(self.__sList)
+    
+    def peek(self):
+        if len(self.__sList) <= 0:
+            raise OutOfRangeError("Cannot peek empty list")
+        else:
+            return self.__sList[-1]
+
 class StackTest(unittest.TestCase):
     def setUp(self):
         self.s = Stack()
@@ -14,7 +42,7 @@ class StackTest(unittest.TestCase):
             self.s.push("item")
 
         self.assertFalse(self.s.isEmpty())
-        self.assertEquals(self.s.size(), nPushes)
+        self.assertEqual(self.s.size(), nPushes)
 
     def testPushPop(self):                 # (3)
         size = self.s.size()
@@ -24,12 +52,52 @@ class StackTest(unittest.TestCase):
         self.assertEqual(self.s.pop(), item)
         self.assertEqual(self.s.size(), size)
 
+    def testPopAll(self):
+        """
+        If the size is n(where n > 0), then after n pops, the stack is empty
+        """
+        n = 6
+        for _ in range(n):
+            self.s.push("item")
+        
+        for _ in range(n):
+            self.s.pop()
+        
+        self.assertTrue(self.s.isEmpty())
+        
+    def testPeek(self):
+        item1 = "apple"
+        item2 = "banana"
+
+        self.s.push(item1)
+        self.s.push(item2)
+
+        size = self.s.size()
+        
+        self.assertEqual(self.s.peek(), item2)
+        self.assertEqual(self.s.size(), size)
+
+    def testPeekEmptyStack(self):
+        self.assertRaises(OutOfRangeError, self.s.peek)
+
+    def testPopEmptyStack(self):
+        self.assertRaises(OutOfRangeError, self.s.pop)
+
+
 def suite():
 	suite = unittest.TestSuite()
-	suite.addTest(StackTest("testNewStack")
-	suite.addTest(StackTest("testPushes")
+	suite.addTest(StackTest("testNewStack"))
+	suite.addTest(StackTest("testPushes"))
 	return suite
 
+def suite2():
+    suite = unittest.TestSuite()
+    suite.addTest(StackTest("testPeekEmptyStack"))
+    suite.addTest(StackTest("testPopEmptyStack"))
+    return suite
+
 if __name__ == "__main__":
-	#unittest.main()
-	unittest.TextTestRunner().run(suite())
+	#unittest.main(verbosity=2)
+    unittest.TextTestRunner(verbosity=2).run(suite())
+    unittest.TextTestRunner(verbosity=2).run(suite2())
+	#unittest.TextTestRunner().run(suite())
