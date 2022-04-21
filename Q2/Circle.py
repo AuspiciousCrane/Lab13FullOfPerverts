@@ -21,7 +21,7 @@ class Circle():
 
         self.r = r
     def getArea(self):
-        return pi*self.r**2
+        return pi*self.r * self.r
     def getPerimeter(self):
         return 2*pi*self.r
     def move(self, newX, newY):

@@ -1,5 +1,6 @@
 import unittest
 from unittest.case import _AssertRaisesContext
+import math
 from Circle import *
 
 import random
@@ -16,6 +17,26 @@ class TestCircle(unittest.TestCase):
         self.assertRaises(NonNumericError, self.c.__init__,2, "y is not a numeric value",2)
     def test_r_is_not_numeric(self):
         self.assertRaises(NonNumericError, self.c.__init__,2, 2, "r is not a numeric value")
+
+    def test_perimeter(self):
+        for i in range(10):
+            x = random.randint(1, 100)
+            y = random.randint(1, 100)
+            r = random.randint(1, 100)
+
+            self.c = Circle(x, y, r)
+
+            self.assertEqual(self.c.getPerimeter(), 2 * pi * r)
+
+    def test_area(self):
+        for i in range(10):
+            x = random.randint(1, 100)
+            y = random.randint(1, 100)
+            r = random.randint(1, 100)
+
+            self.c = Circle(x, y, r)
+
+            self.assertEqual(self.c.getArea(), pi * r * r)
 
     # def test_create_circle_with_numeric_value_r(self):
     #     self.assertTrue(str(self.c.getR()).isnumeric())
