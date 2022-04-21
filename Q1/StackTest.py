@@ -115,7 +115,5 @@ def suite2():
     return suite
 
 if __name__ == "__main__":
-	#unittest.main(verbosity=2)
     unittest.TextTestRunner(verbosity=2).run(suite())
     unittest.TextTestRunner(verbosity=2).run(suite2())
-	#unittest.TextTestRunner().run(suite())
