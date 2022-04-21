@@ -1,5 +1,4 @@
 from cmath import pi
-from re import X
 
 class Error(Exception): pass
 class NonNumericError(Error): pass
@@ -7,12 +6,19 @@ class NegativeRadius(Error): pass
 
 class Circle():
     def __init__(self, x, y, r):
-        if not (isinstance(x, int) or isinstance(y, int) or isinstance(r, int) or isinstance(x, float) or isinstance(y, float) or isinstance(r, float)):
-            raise NonNumericError
+        if not (isinstance(x, int) or isinstance(x, float)):
+            raise NonNumericError("X is not a number")
+        if not (isinstance(y, int) or isinstance(y, float)):
+            raise NonNumericError("Y is not a number")
+        if not (isinstance(r, int) or isinstance(r, float)):
+            raise NonNumericError("r is not a number")
+
         self.x = x
         self.y = y
-        if(r < 0):
-            raise NegativeRadius
+
+#        if(r < 0):
+#            raise NegativeRadius
+
         self.r = r
     def getArea(self):
         return pi*self.r**2
@@ -27,10 +33,6 @@ class Circle():
         return self.y
     def getR(self):
         return self.r
-
-c = Circle("asd", 100, 5)
-print(c.getArea)
-	
 
 # What need to be test
 ## x must be a number
