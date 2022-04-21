@@ -76,30 +76,30 @@ class StackTest(unittest.TestCase):
         self.assertEqual(self.s.peek(), item2)
         self.assertEqual(self.s.size(), size)
 
-    # def testPopAll(self):
-    #     """
-    #     If the size is n(where n > 0), then after n pops, the stack is empty
-    #     """
-    #     n = 6
-    #     for _ in range(n):
-    #         self.s.push("item")
+    def testPopAll(self):
+        """
+        If the size is n(where n > 0), then after n pops, the stack is empty
+        """
+        n = 6
+        for _ in range(n):
+            self.s.push("item")
         
-    #     for _ in range(n):
-    #         self.s.pop()
+        for _ in range(n):
+            self.s.pop()
         
-    #     self.assertTrue(self.s.isEmpty())
+        self.assertTrue(self.s.isEmpty())
 
-    # def testPeekEmptyStack(self):
-    #     """
-    #     Popping from an empty stack will raise OutOfRangeError
-    #     """
-    #     self.assertRaises(OutOfRangeError, self.s.peek)
+    def testPeekEmptyStack(self):
+        """
+        Popping from an empty stack will raise OutOfRangeError
+        """
+        self.assertRaises(OutOfRangeError, self.s.peek)
 
-    # def testPopEmptyStack(self):
-    #     """
-    #     Peeking into empty stack will raise OutOfRangeError
-    #     """
-    #     self.assertRaises(OutOfRangeError, self.s.pop)
+    def testPopEmptyStack(self):
+        """
+        Peeking into empty stack will raise OutOfRangeError
+        """
+        self.assertRaises(OutOfRangeError, self.s.pop)
 
 
 def suite():
