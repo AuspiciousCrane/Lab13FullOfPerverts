@@ -33,10 +33,16 @@ class StackTest(unittest.TestCase):
         self.s = Stack()
 
     def testNewStack(self):                # (1)
+        """
+        A stack is empty on construction and its size is obviously zero
+        """
         self.assertTrue(self.s.isEmpty())
         self.assertEquals(self.s.size(), 0)
 
     def testPushes(self):                  # (2)
+        """
+        After n pushes (where n > 0) to an empty stack, the stack is not empty and its size is n
+        """
         nPushes = 6
         for i in range(nPushes):
             self.s.push("item")
@@ -45,6 +51,9 @@ class StackTest(unittest.TestCase):
         self.assertEqual(self.s.size(), nPushes)
 
     def testPushPop(self):                 # (3)
+        """
+        If one pushes x then pops, the value popped is x
+        """
         size = self.s.size()
 
         item = "Python"
@@ -52,35 +61,44 @@ class StackTest(unittest.TestCase):
         self.assertEqual(self.s.pop(), item)
         self.assertEqual(self.s.size(), size)
 
-    def testPopAll(self):
+    def testPeek(self):
         """
-        If the size is n(where n > 0), then after n pops, the stack is empty
+        If one pushes x then peeks, the value returned is x but the size stays the same
         """
-        n = 6
-        for _ in range(n):
-            self.s.push("item")
-        
-        for _ in range(n):
-            self.s.pop()
-        
-        self.assertTrue(self.s.isEmpty())
-        
-    # def testPeek(self):
-    #     item1 = "apple"
-    #     item2 = "banana"
+        item1 = "apple"
+        item2 = "banana"
 
-    #     self.s.push(item1)
-    #     self.s.push(item2)
+        self.s.push(item1)
+        self.s.push(item2)
 
-    #     size = self.s.size()
+        size = self.s.size()
         
-    #     self.assertEqual(self.s.peek(), item2)
-    #     self.assertEqual(self.s.size(), size)
+        self.assertEqual(self.s.peek(), item2)
+        self.assertEqual(self.s.size(), size)
+
+    # def testPopAll(self):
+    #     """
+    #     If the size is n(where n > 0), then after n pops, the stack is empty
+    #     """
+    #     n = 6
+    #     for _ in range(n):
+    #         self.s.push("item")
+        
+    #     for _ in range(n):
+    #         self.s.pop()
+        
+    #     self.assertTrue(self.s.isEmpty())
 
     # def testPeekEmptyStack(self):
+    #     """
+    #     Popping from an empty stack will raise OutOfRangeError
+    #     """
     #     self.assertRaises(OutOfRangeError, self.s.peek)
 
     # def testPopEmptyStack(self):
+    #     """
+    #     Peeking into empty stack will raise OutOfRangeError
+    #     """
     #     self.assertRaises(OutOfRangeError, self.s.pop)
 
 
