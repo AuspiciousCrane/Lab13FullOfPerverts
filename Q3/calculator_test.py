@@ -14,7 +14,7 @@ class CalculatorTest(unittest.TestCase):
 	def testDivideByZero(self):
 		self.assertRaises(DivideByZeroError, self.calc.divide, 0)
 
-"""
+
 	def testNonNumericSet(self):
 		self.assertRaises(NonNumericError, self.calc.set_accumulator, "Never Gonna Give You Up")
 
@@ -85,6 +85,6 @@ class CalculatorTest(unittest.TestCase):
 
 			self.calc.set_accumulator(init_value)
 			self.assertEqual(self.calc.get_status(), f"Result: {init_value}")
-"""
+
 if __name__ == "__main__":
 	unittest.main()
