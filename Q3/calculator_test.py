@@ -1,6 +1,6 @@
 import unittest
 import random
-from Calculator import Calculator, DivideByZeroError
+from Calculator import Calculator, DivideByZeroError, NonNumericError
 
 class CalculatorTest(unittest.TestCase):
 	def setUp(self):
@@ -14,13 +14,28 @@ class CalculatorTest(unittest.TestCase):
 	def testDivideByZero(self):
 		self.assertRaises(DivideByZeroError, self.calc.divide, 0)
 
+"""
+	def testNonNumericSet(self):
+		self.assertRaises(NonNumericError, self.calc.set_accumulator, "Never Gonna Give You Up")
+
+	def testNonNumericAdd(self):
+		self.assertRaises(NonNumericError, self.calc.add, "Never Gonna Let You Down")
+
+	def testNonNumericSubtract(self):
+		self.assertRaises(NonNumericError, self.calc.subtract, "Never Gonna Run Around And")
+
+	def testNonNumericMultiply(self):
+		self.assertRaises(NonNumericError, self.calc.multiply, "Hurt You")
+
+	def testNonNumericDivide(self):
+		self.assertRaises(NonNumericError, self.calc.divide, "- Rick Astley")
+
 	def testSetGetAccumulator(self):
 		acc_value = random.uniform(-69420, 69420)
 		self.calc.set_accumulator(acc_value)
 
 		self.assertEqual(self.calc.get_accumulator(), acc_value)
 
-"""
 	def testAdd(self):
 		for i in range(420):
 			init_value = random.uniform(-69420, 69420)
@@ -71,6 +86,5 @@ class CalculatorTest(unittest.TestCase):
 			self.calc.set_accumulator(init_value)
 			self.assertEqual(self.calc.get_status(), f"Result: {init_value}")
 """
-
 if __name__ == "__main__":
 	unittest.main()

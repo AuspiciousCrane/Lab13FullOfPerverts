@@ -7,3 +7,4 @@
 * If one divides x to the accumulator then gets the accumulator's value, the value returned is the old accumulator's value / x
 * If one gets the status of the calculator while the accumulator's value is x, the string returned should be "Result: x"
 * Dividing by 0 will raise ZeroDivisionError
+* Inputting a non-numeric value raises a NonNumericError
