@@ -2,7 +2,7 @@ class Error(Exception): pass
 class DivideByZeroError(Error): pass
 class NonNumericError(Error): pass
 
-"""
+
 class Calculator:
 	def __init__(self):
 		self.acc = 0.00
@@ -46,4 +46,4 @@ if __name__ == "__main__":
 	c = Calculator()
 	print(isinstance(c.acc, float))
 	print(c.get_status())
-"""
+
