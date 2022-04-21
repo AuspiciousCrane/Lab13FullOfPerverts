@@ -16,8 +16,8 @@ class Circle():
         self.x = x
         self.y = y
 
-#        if(r < 0):
-#            raise NegativeRadius
+        if(r < 0):
+            raise NegativeRadius
 
         self.r = r
     def getArea(self):
