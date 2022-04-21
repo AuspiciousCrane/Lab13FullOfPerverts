@@ -34,7 +34,7 @@ class StackTest(unittest.TestCase):
 
     def testNewStack(self):                # (1)
         self.assertTrue(self.s.isEmpty())
-        self.assertEqual(self.s.size(), 0)
+        self.assertEquals(self.s.size(), 0)
 
     def testPushes(self):                  # (2)
         nPushes = 6
@@ -65,23 +65,23 @@ class StackTest(unittest.TestCase):
         
         self.assertTrue(self.s.isEmpty())
         
-    def testPeek(self):
-        item1 = "apple"
-        item2 = "banana"
+    # def testPeek(self):
+    #     item1 = "apple"
+    #     item2 = "banana"
 
-        self.s.push(item1)
-        self.s.push(item2)
+    #     self.s.push(item1)
+    #     self.s.push(item2)
 
-        size = self.s.size()
+    #     size = self.s.size()
         
-        self.assertEqual(self.s.peek(), item2)
-        self.assertEqual(self.s.size(), size)
+    #     self.assertEqual(self.s.peek(), item2)
+    #     self.assertEqual(self.s.size(), size)
 
-    def testPeekEmptyStack(self):
-        self.assertRaises(OutOfRangeError, self.s.peek)
+    # def testPeekEmptyStack(self):
+    #     self.assertRaises(OutOfRangeError, self.s.peek)
 
-    def testPopEmptyStack(self):
-        self.assertRaises(OutOfRangeError, self.s.pop)
+    # def testPopEmptyStack(self):
+    #     self.assertRaises(OutOfRangeError, self.s.pop)
 
 
 def suite():
